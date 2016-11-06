@@ -3,7 +3,6 @@ package com.example.brian.jesusfilm.deeplink;
 import android.net.Uri;
 
 public class GodToolsDeepLink extends DeepLink {
-
     private final String resource;
     private final String language;
     private final int page;
@@ -13,7 +12,8 @@ public class GodToolsDeepLink extends DeepLink {
         private String language = "en";
         private int page = 1;
 
-        public Builder() {
+        public Builder(String deviceId) {
+            super(deviceId);
             this.appId("org.cru.godtools");
         }
 
@@ -42,6 +42,13 @@ public class GodToolsDeepLink extends DeepLink {
         resource = builder.resource;
         language = builder.language;
         page = builder.page;
+    }
+
+    public GodToolsDeepLink(Uri link) {
+        super(link);
+        language = link.getPathSegments().get(2);
+        resource = link.getPathSegments().get(3);
+        page = 1;
     }
 
     public Uri deeplink() {
