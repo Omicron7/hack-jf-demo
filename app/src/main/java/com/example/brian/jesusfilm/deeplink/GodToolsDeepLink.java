@@ -54,4 +54,12 @@ public class GodToolsDeepLink extends DeepLink {
     public Uri deeplink() {
         return super.deeplink().buildUpon().appendPath(language).appendPath(resource).appendPath(Integer.toString(page)).build();
     }
+
+    public String getResource() {
+        return resource;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
 }
